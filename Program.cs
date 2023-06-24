@@ -9,6 +9,7 @@ public class Test
         using Aes aes = Aes.Create(); ;
 
         byte[] input = Encoding.ASCII.GetBytes(message);
+        aes.Mode = CipherMode.ECB;
 
         byte[] cipherText = aes.EncryptEcb(input, PaddingMode.Zeros);
         StringBuilder sb = new StringBuilder();
