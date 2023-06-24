@@ -6,22 +6,18 @@ public class Test
 {
     public static string EncryptWithEcb(string message)
     {
-        using (SymmetricAlgorithm sa = SymmetricAlgorithm.Create())
+        using Aes aes = Aes.Create(); ;
+
+        byte[] input = Encoding.ASCII.GetBytes(message);
+
+        byte[] cipherText = aes.EncryptEcb(input, PaddingMode.Zeros);
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < cipherText.Length; i++)
         {
-
-            byte[] input = Encoding.ASCII.GetBytes(message);
-
-            byte[] cipherText = sa.EncryptEcb(input, PaddingMode.Zeros);
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < cipherText.Length; i++)
-            {
-                sb.Append(cipherText[i].ToString("X2"));
-            }
-            return sb.ToString();
-
-
+            sb.Append(cipherText[i].ToString("X2"));
         }
+        return sb.ToString();
     }
 
     public static string ComputeMd5Hash(string message)
