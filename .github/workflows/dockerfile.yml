@@ -1,7 +1,9 @@
 name: Lint Dockerfile
 
-on: push:
-    workflow_dispatch:
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
