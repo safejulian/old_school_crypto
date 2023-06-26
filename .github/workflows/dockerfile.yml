@@ -23,7 +23,7 @@ jobs:
           no-fail: true
           output-file: hadolint.sarif
 
-      - name: Upload Trivy scan results to GitHub Security tab
+      - name: Upload Hadolint scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'hadolint.sarif'
